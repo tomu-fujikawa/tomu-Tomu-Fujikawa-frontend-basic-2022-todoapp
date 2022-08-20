@@ -3,6 +3,7 @@ import styled from "styled-components";
 import plus from "../../../assets/svg/plus.svg";
 import COLOR from "../../../variables/color";
 import TEXT from "../../../variables/texts";
+import FAMILY from "../../../variables/font_family";
 const AddTaskButton = (props) => {
   return (
     <Button onClick={props.onClick}>
@@ -39,6 +40,7 @@ const ImgLabelContainer = styled.div`
   color: ${COLOR.GREEN};
   ${TEXT.S}
   font-weight: 500;
+  font-family: ${NOTO_SANS};
 `;
 const Button = styled.button`
   position: relative;
