@@ -40,7 +40,7 @@ const ImgLabelContainer = styled.div`
   color: ${COLOR.GREEN};
   ${TEXT.S}
   font-weight: 500;
-  font-family: ${NOTO_SANS};
+  font-family: ${FAMILY.NOTO_SANS};
 `;
 const Button = styled.button`
   position: relative;
