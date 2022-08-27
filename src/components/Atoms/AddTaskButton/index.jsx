@@ -8,17 +8,21 @@ const AddTaskButton = (props) => {
   return (
     <Button onClick={props.onClick}>
       <HoverEllipse />
-      <ImgLabelContainer>
-        <img
-          style={{
-            width: 20,
-            height: 20,
-            marginRight: 10,
-          }}
-          src={plus}
-        />
-        {props.label}
-      </ImgLabelContainer>
+      <img
+        style={{
+          width: 20,
+          height: 20,
+          marginRight: 10,
+        }}
+        src={plus}
+      />
+      <p
+        style={{
+          margin: 0,
+        }}
+      >
+        タスクを追加
+      </p>
     </Button>
   );
 };
@@ -28,27 +32,24 @@ const HoverEllipse = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+const Button = styled.button`
+  display: flex;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   width: 126px;
   height: 24px;
-`;
-const ImgLabelContainer = styled.div`
-  position: absolute;
-  display: flex;
-  padding: 2px 6px;
-  top: 0;
-  left: 0;
+  background-color: transparent;
+  border-color: transparent;
   color: ${COLOR.GREEN};
   ${TEXT.S}
   font-weight: 500;
   font-family: ${FAMILY.NOTO_SANS};
-`;
-const Button = styled.button`
-  position: relative;
-  padding: 0;
-  width: 130px;
-  height: 24px;
-  background-color: transparent;
-  border-color: transparent;
   cursor: pointer;
   &:hover ${HoverEllipse} {
     border-radius: 9999px;
