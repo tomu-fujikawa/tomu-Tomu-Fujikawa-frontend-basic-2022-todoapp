@@ -1,37 +1,36 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 import COLOR from "../../../variables/color";
 import TEXT from "../../../variables/texts";
-import FONT_FAMILY from "../../../variables/font_family";
 
-const Input = (props) => {
-  function InputDeleteEnterKey(e) {
+const Input = ({ onEditComplete, defaultValue }) => {
+  const InputDeleteEnterKey = (e) => {
     if (e.key === "Enter") {
-      props.onEditComplete;
+      onEditComplete;
     }
-  }
+  };
+  const ref = useRef(null);
+  useEffect(() => {
+    ref.current.focus();
+    ref.current.onBlur = { onEditComplete };
+    ref.current.onKeyPress = { InputDeleteEnterKey };
+    ref.current.onEdiComplete = { onEditComplete };
+  }, []);
+
   return (
     <InputWrapper>
-      <input
-        type="text"
-        onBlur={props.onEditComplete}
-        onKeyPress={InputDeleteEnterKey}
-        onEditComplete={props.onEditComplete}
-        defaultValue={props.defaultValue}
-      ></input>
+      <input ref={ref} defaultValue={defaultValue} type="text" />
     </InputWrapper>
   );
 };
 export default Input;
 
 const InputWrapper = styled.div`
-  font-family: ${FONT_FAMILY.NOTO_SANS};
   font-weight: 500;
   ${TEXT.S}
   background-color: ${COLOR.BLACK};
   border-radius: 2px;
   padding: 0 4px;
-  width: 232px;
   height: 20px;
   & > input {
     width: 100%;
