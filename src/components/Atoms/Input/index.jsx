@@ -6,7 +6,7 @@ import TEXT from "../../../variables/texts";
 const Input = ({ onEditComplete, defaultValue }) => {
   const InputDeleteEnterKey = (e) => {
     if (e.key === "Enter") {
-      onEditComplete;
+      onEditComplete(ref.current.value);
     }
   };
   const ref = useRef(null);
@@ -14,9 +14,8 @@ const Input = ({ onEditComplete, defaultValue }) => {
     ref.current.focus();
     ref.current.onBlur = { onEditComplete };
     ref.current.onKeyPress = { InputDeleteEnterKey };
-    ref.current.onEdiComplete = { onEditComplete };
   }, []);
-
+  text.addEventListener("pushEnterKey", InputDeleteEnterKey);
   return (
     <InputWrapper>
       <input ref={ref} defaultValue={defaultValue} type="text" />

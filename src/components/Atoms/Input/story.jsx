@@ -10,12 +10,12 @@ export default {
     },
   },
 };
-const onEditComplete = undefined;
+const onEditComplete = console.log("上手くいってるかも");
+const defalutValue = console.log("多分上手くいってるはず");
 const Template = (args) => <Component {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  onClick: () => console.log("clicked"),
   onEditComplete: onEditComplete,
-  defaultValue: undefined,
+  defaultValue: defalutValue,
 };
