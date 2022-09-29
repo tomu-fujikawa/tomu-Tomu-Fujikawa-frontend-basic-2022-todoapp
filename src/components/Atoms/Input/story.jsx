@@ -11,7 +11,7 @@ export default {
   },
 };
 const onEditComplete = () => console.log("上手くいってるかも");
-const defaultValue = () => console.log("多分上手くいってるはず");
+const defaultValue = "多分上手くいってるはず";
 const Template = (args) => <Component {...args} />;
 
 export const Default = Template.bind({});
