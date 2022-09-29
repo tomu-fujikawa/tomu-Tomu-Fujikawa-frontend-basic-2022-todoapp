@@ -14,13 +14,12 @@ const Input = ({ onEditComplete, defaultValue }) => {
     ref.current.focus();
     ref.current.onBlur = { onEditComplete };
     ref.current.onKeyPress = { InputDeleteEnterKey };
-    let text = document.getElementById("text");
-    text.addEventListener("pushEnterKey", InputDeleteEnterKey);
+    ref.current.addEventListener("keypress", InputDeleteEnterKey);
   }, []);
 
   return (
     <InputWrapper>
-      <input ref={ref} defaultValue={defaultValue} type="text" id="text" />
+      <input ref={ref} defaultValue={defaultValue} type="text" />
     </InputWrapper>
   );
 };
