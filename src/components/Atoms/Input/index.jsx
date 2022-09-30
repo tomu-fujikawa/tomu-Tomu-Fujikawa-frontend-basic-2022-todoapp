@@ -12,8 +12,8 @@ const Input = ({ onEditComplete, defaultValue }) => {
   const ref = useRef(null);
   useEffect(() => {
     ref.current.focus();
-    ref.current.onBlur = { onEditComplete };
-    ref.current.onKeyPress = { InputDeleteEnterKey };
+    ref.current.onkeypress = () => InputDeleteEnterKey;
+    ref.current.onblur = () => onEditComplete(ref.current.value);
     ref.current.addEventListener("keypress", InputDeleteEnterKey);
   }, []);
 
