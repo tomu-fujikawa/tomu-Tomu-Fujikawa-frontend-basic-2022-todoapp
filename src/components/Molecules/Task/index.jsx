@@ -38,7 +38,7 @@ const Task = ({
       {isEditing && (
         <Input
           defaultValue={defalutValue}
-          onEditComplete={inputOnEditCompleted(ref.current.value)}
+          onEditComplete={inputOnEditCompleted}
         ></Input>
       )}
     </StyledTaskContainer>
