@@ -16,7 +16,8 @@ const Task = ({
 }) => {
   const [isEditing, setIsEditing] = useState(defaultIsEditing);
   const checkBoxOnClick = () => {
-    taskCompleted(), setIsEditing(false);
+    taskCompleted();
+    setIsEditing(false);
   };
   const editButtonOnClick = () => {
     setIsEditing(setIsEditingTrue);
@@ -37,7 +38,7 @@ const Task = ({
       {isEditing && (
         <Input
           defaultValue={defalutValue}
-          onEditComplete={inputOnEditCompleted}
+          onEditComplete={inputOnEditCompleted(ref.current.value)}
         ></Input>
       )}
     </StyledTaskContainer>
