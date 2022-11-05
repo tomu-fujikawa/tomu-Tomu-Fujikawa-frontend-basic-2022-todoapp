@@ -6,40 +6,28 @@ import Input from "../../Atoms/Input/index.jsx";
 import COLOR from "../../../variables/color";
 import TEXT from "../../../variables/texts";
 
-const Task = ({
-  defalutValue,
-  defaultIsEditing,
-  taskCompleted,
-  editCompleted,
-  setIsEditingFalse,
-  setIsEditingTrue,
-}) => {
-  const [isEditing, setIsEditing] = useState(defaultIsEditing);
-  const checkBoxOnClick = () => {
-    taskCompleted();
-    setIsEditing(false);
-  };
+const Task = ({ defalutValue, taskCompleted, editCompleted }) => {
+  const [isEditing, setIsEditing] = useState(false);
   const editButtonOnClick = () => {
-    setIsEditing(setIsEditingTrue);
+    setIsEditing(true);
   };
   const inputOnEditCompleted = (text) => {
     editCompleted(text);
-    setIsEditing(setIsEditingFalse);
+    setIsEditing(false);
   };
   return (
     <StyledTaskContainer>
-      <Checkbox onClick={checkBoxOnClick} />
-      {!isEditing && (
+      <Checkbox onClick={taskCompleted} />
+      {isEditing ? (
+        <Input
+          defaultValue={defalutValue}
+          onEditComplete={inputOnEditCompleted}
+        />
+      ) : (
         <StyledToDoItemContainer>
           <StyledToDoItem>{defalutValue}</StyledToDoItem>
           <Editbutton onClick={editButtonOnClick} />
         </StyledToDoItemContainer>
-      )}
-      {isEditing && (
-        <Input
-          defaultValue={defalutValue}
-          onEditComplete={inputOnEditCompleted}
-        ></Input>
       )}
     </StyledTaskContainer>
   );
@@ -53,6 +41,8 @@ const StyledTaskContainer = styled.div`
 
 const StyledToDoItemContainer = styled.div`
   display: flex;
+  justify-content: space-between;
+  width: 214px;
 `;
 const StyledToDoItem = styled.div`
   ${TEXT.S};

@@ -10,24 +10,17 @@ export default {
     },
   },
 };
-const defaultIsEditing = false;
-const taskCompleted = () => {
-  console.log("task completed");
-};
-const editCompleted = (text) => {
-  console.log("taskname changed: " + text);
-};
-const setIsEditingFalse = false;
-const setIsEditingTrue = true;
+
 const Template = (args) => <Component {...args} />;
 
 export const Default = Template.bind({});
 
 Default.args = {
   defalutValue: "test",
-  defaultIsEditing,
-  taskCompleted,
-  editCompleted,
-  setIsEditingFalse,
-  setIsEditingTrue,
+  taskCompleted: () => {
+    console.log("task completed");
+  },
+  editCompleted: (text) => {
+    console.log("taskname changed: " + text);
+  },
 };
