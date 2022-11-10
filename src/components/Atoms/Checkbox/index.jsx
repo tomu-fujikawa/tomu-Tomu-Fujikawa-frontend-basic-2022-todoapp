@@ -23,6 +23,7 @@ const Button = styled.button`
   border-radius: 2px;
   cursor: pointer;
   padding: 0;
+  margin-right: 10px;
   & > img {
     width: 14px;
     display: none;
