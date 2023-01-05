@@ -35,7 +35,7 @@ const Task = ({ defalutValue, taskCompleted, editCompleted }) => {
 
 const StyledTaskContainer = styled.div`
   display: flex;
-  justify-content: center;
+  padding-left: 6px;
   align-items: center;
 `;
 
