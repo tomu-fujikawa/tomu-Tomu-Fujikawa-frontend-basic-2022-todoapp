@@ -6,8 +6,13 @@ import Input from "../../Atoms/Input/index.jsx";
 import COLOR from "../../../variables/color";
 import TEXT from "../../../variables/texts";
 
-const Task = ({ defalutValue, taskCompleted, editCompleted }) => {
-  const [isEditing, setIsEditing] = useState(false);
+const Task = ({
+  defalutValue,
+  taskCompleted,
+  editCompleted,
+  defaultIsEditing,
+}) => {
+  const [isEditing, setIsEditing] = useState(defaultIsEditing);
   const editButtonOnClick = () => {
     setIsEditing(true);
   };
@@ -35,12 +40,13 @@ const Task = ({ defalutValue, taskCompleted, editCompleted }) => {
 
 const StyledTaskContainer = styled.div`
   display: flex;
-  justify-content: center;
+  padding-left: 6px;
   align-items: center;
 `;
 
 const StyledToDoItemContainer = styled.div`
   display: flex;
+  flex: 1;
   justify-content: space-between;
   width: 214px;
 `;
