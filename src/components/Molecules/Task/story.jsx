@@ -23,4 +23,5 @@ Default.args = {
   editCompleted: (text) => {
     console.log("taskname changed: " + text);
   },
+  defaultIsEditing: false,
 };

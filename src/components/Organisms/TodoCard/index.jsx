@@ -3,10 +3,14 @@ import styled from "styled-components";
 import Task from "../../Molecules/Task/index.jsx";
 import AddTaskButton from "../../Atoms/AddTaskButton/index.jsx";
 const TodoCard = () => {
-  const [taskList, setTaskList] = useState(["aaa", "bbb"]);
+  const [taskList, setTaskList] = useState([]);
   const onAddTaskButtonClick = () => {
-    setTaskList((taskList) => [...taskList, ""]);
-  }; //「タクスを追加」を押した際の処理
+    const addTask = {
+      name: "",
+      initializing: true,
+    };
+    setTaskList((taskList) => [...taskList, addTask]);
+  };
   const taskCompleted = (indexOfCompletedTask) => {
     setTaskList(
       taskList.filter((_, index) => {
@@ -23,23 +27,24 @@ const TodoCard = () => {
       );
     } else {
       const newTaskList = [...taskList];
-      newTaskList[indexofeditedTaskName] = editedTaskName;
+      newTaskList[indexofeditedTaskName].name = editedTaskName;
+      newTaskList[indexofeditedTaskName].initializing = false;
       setTaskList(newTaskList);
     }
   };
   return (
     <StyledTodoCard>
       <AddTaskButton onClick={onAddTaskButtonClick} />
-      {taskList.map((taskName, index) => (
+      {taskList.map((task, index) => (
         <Task
-          defalutValue={taskName}
+          defalutValue={task.name}
           editCompleted={(text) => onTaskNameChange(text, index)}
           taskCompleted={() => {
             taskCompleted(index);
           }}
+          defaultIsEditing={task.initializing}
         />
       ))}
-      {/* <StyledTaskList>{onAddTaskButtonClick}</StyledTaskList> */}
     </StyledTodoCard>
   );
 };
@@ -50,4 +55,3 @@ const StyledTodoCard = styled.div`
   gap: 10px;
   padding: 20px;
 `;
-const StyledTaskList = styled.div``;

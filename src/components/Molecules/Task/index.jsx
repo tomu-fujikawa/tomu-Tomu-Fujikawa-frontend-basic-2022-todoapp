@@ -6,8 +6,13 @@ import Input from "../../Atoms/Input/index.jsx";
 import COLOR from "../../../variables/color";
 import TEXT from "../../../variables/texts";
 
-const Task = ({ defalutValue, taskCompleted, editCompleted }) => {
-  const [isEditing, setIsEditing] = useState(false);
+const Task = ({
+  defalutValue,
+  taskCompleted,
+  editCompleted,
+  defaultIsEditing,
+}) => {
+  const [isEditing, setIsEditing] = useState(defaultIsEditing);
   const editButtonOnClick = () => {
     setIsEditing(true);
   };
