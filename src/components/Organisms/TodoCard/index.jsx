@@ -52,6 +52,9 @@ export default TodoCard;
 const StyledTodoCard = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 500px;
   gap: 10px;
   padding: 20px;
+  background-color: #282a2e;
+  border-radius: 4px;
 `;

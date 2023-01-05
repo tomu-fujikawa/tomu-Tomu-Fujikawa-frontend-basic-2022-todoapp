@@ -13,7 +13,7 @@ const Input = ({ onEditComplete, defaultValue }) => {
   useEffect(() => {
     ref.current.focus();
     ref.current.onkeypress = () => InputDeleteEnterKey;
-    ref.current.onblur = () => onEditComplete(ref.current.value);
+    // ref.current.onblur = () => onEditComplete(ref.current.value);
     ref.current.addEventListener("keypress", InputDeleteEnterKey);
   }, []);
 
@@ -32,6 +32,7 @@ const InputWrapper = styled.div`
   border-radius: 2px;
   padding: 0 4px;
   height: 20px;
+  width: 100%;
   & > input {
     width: 100%;
     height: 100%;
