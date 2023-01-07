@@ -40,7 +40,7 @@ const Task = ({
 
 const StyledTaskContainer = styled.div`
   display: flex;
-  padding-left: 6px;
+  padding: 2px 0 2px 6px;
   align-items: center;
 `;
 
