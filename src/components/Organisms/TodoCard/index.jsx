@@ -5,17 +5,17 @@ import AddTaskButton from "../../Atoms/AddTaskButton/index.jsx";
 const TodoCard = () => {
   const [taskList, setTaskList] = useState([]);
   useEffect(() => {
-    const getItemTaskList = localStorage.getItem("taskList");
-    if (getItemTaskList === null) {
+    const loadedTaskList = localStorage.getItem("taskList");
+    if (loadedTaskList === null) {
       setTaskList([]);
     } else {
-      const parseTaskList = JSON.parse(getItemTaskList);
-      setTaskList([...parseTaskList]);
+      const parsedTaskList = JSON.parse(loadedTaskList);
+      setTaskList([...parsedTaskList]);
     }
   }, []);
   useEffect(() => {
-    const stringifyTaskList = JSON.stringify(taskList);
-    localStorage.setItem("taskList", stringifyTaskList);
+    const stringifiedTaskList = JSON.stringify(taskList);
+    localStorage.setItem("taskList", stringifiedTaskList);
   }, [taskList]);
   const onAddTaskButtonClick = () => {
     const addTask = {
