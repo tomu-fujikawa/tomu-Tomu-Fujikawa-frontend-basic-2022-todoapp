@@ -10,6 +10,7 @@ const Title = () => {
 export default Title;
 
 const StyledText = styled.div`
+  margin-bottom: 20px;
   color: ${COLOR.WHITE};
   ${TEXT.M}
   @media (min-width: ${BREAKPOINT.MEDIUM}) {
