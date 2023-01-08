@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Task from "../../Molecules/Task/index.jsx";
 import AddTaskButton from "../../Atoms/AddTaskButton/index.jsx";
 const TodoCard = () => {
   const [taskList, setTaskList] = useState([]);
+  useEffect(() => {
+    const getItemTaskList = localStorage.getItem("taskList");
+    if (getItemTaskList === null) {
+      setTaskList([]);
+    } else {
+      const parseTaskList = JSON.parse(getItemTaskList);
+      setTaskList([...parseTaskList]);
+    }
+  }, []);
+  useEffect(() => {
+    const stringifyTaskList = JSON.stringify(taskList);
+    localStorage.setItem("taskList", stringifyTaskList);
+  }, [taskList]);
   const onAddTaskButtonClick = () => {
     const addTask = {
       name: "",
