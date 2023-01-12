@@ -13,9 +13,6 @@ export const AlertHandlerProvider = ({ children }) => {
 
   const closeAlert = () => {
     setAlertState({ visivle: false, errorText: alertState.errorText });
-    // setAlertState.setTimeout(() => {
-    //   alertState.visible = false;
-    // }, 5000);
   };
 
   const contextValue = {
