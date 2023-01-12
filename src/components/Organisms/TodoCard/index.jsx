@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Task from "../../Molecules/Task/index.jsx";
 import AddTaskButton from "../../Atoms/AddTaskButton/index.jsx";
@@ -6,6 +6,19 @@ import { useAlertHandlerContext } from "../../../contexts/alert_handler.jsx";
 const TodoCard = () => {
   const AlertHandlerContext = useAlertHandlerContext();
   const [taskList, setTaskList] = useState([]);
+  useEffect(() => {
+    const loadedTaskList = localStorage.getItem("taskList");
+    if (loadedTaskList === null) {
+      setTaskList([]);
+    } else {
+      const parsedTaskList = JSON.parse(loadedTaskList);
+      setTaskList([...parsedTaskList]);
+    }
+  }, []);
+  useEffect(() => {
+    const stringifiedTaskList = JSON.stringify(taskList);
+    localStorage.setItem("taskList", stringifiedTaskList);
+  }, [taskList]);
   const onAddTaskButtonClick = () => {
     const addTask = {
       name: "",
