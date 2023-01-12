@@ -12,12 +12,10 @@ const AlertManager = () => {
   }, [AlertHandlerContext]);
 
   return (
-    <>
-      <Alert
-        isActive={AlertHandlerContext.visible}
-        alertMessage={AlertHandlerContext.errorText}
-      />
-    </>
+    <Alert
+      isActive={AlertHandlerContext.visible}
+      alertMessage={AlertHandlerContext.errorText}
+    />
   );
 };
 export default AlertManager;
