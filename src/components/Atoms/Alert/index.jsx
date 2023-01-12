@@ -3,6 +3,7 @@ import styled from "styled-components";
 import COLOR from "../../../variables/color";
 import TEXT from "../../../variables/texts";
 import FONTFAMILY from "../../../variables/font_family";
+import BREAKPOINT from "../../../variables/breakpoint";
 const Alert = ({ isActive, alertMessage }) => {
   return <StyledAlert isActive={isActive}>{alertMessage}</StyledAlert>;
 };
@@ -12,6 +13,14 @@ const StyledAlert = styled.div`
     return isActive ? "block" : "none";
   }};
   padding: 10px 20px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  top: 80px;
+  @media screen and (max-width: ${BREAKPOINT.MEDIUM}) {
+    top: 40px;
+  }
   color: ${COLOR.WHITE};
   background-color: ${COLOR.RED};
   ${TEXT.S};

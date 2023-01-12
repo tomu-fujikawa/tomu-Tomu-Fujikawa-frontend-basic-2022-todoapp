@@ -27,5 +27,4 @@ export const AlertHandlerProvider = ({ children }) => {
     </AlertHandlerContext.Provider>
   );
 };
-
 export const useAlertHandlerContext = () => useContext(AlertHandlerContext);
