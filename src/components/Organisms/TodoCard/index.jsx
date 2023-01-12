@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Task from "../../Molecules/Task/index.jsx";
 import AddTaskButton from "../../Atoms/AddTaskButton/index.jsx";
+import { useAlertHandlerContext } from "../../../contexts/alert_handler.jsx";
 const TodoCard = () => {
+  const AlertHandlerContext = useAlertHandlerContext();
   const [taskList, setTaskList] = useState([]);
   const onAddTaskButtonClick = () => {
     const addTask = {
@@ -25,6 +27,7 @@ const TodoCard = () => {
           return index != indexofeditedTaskName;
         })
       );
+      AlertHandlerContext.setAlert("タスクの名前が設定されていません。");
     } else {
       const newTaskList = [...taskList];
       newTaskList[indexofeditedTaskName].name = editedTaskName;
@@ -37,6 +40,7 @@ const TodoCard = () => {
       <AddTaskButton onClick={onAddTaskButtonClick} />
       {taskList.map((task, index) => (
         <Task
+          key={index}
           defalutValue={task.name}
           editCompleted={(text) => onTaskNameChange(text, index)}
           taskCompleted={() => {
