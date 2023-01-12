@@ -4,17 +4,22 @@ import COLOR from "../../../variables/color";
 import TEXT from "../../../variables/texts";
 
 const Input = ({ onEditComplete, defaultValue }) => {
-  const InputDeleteEnterKey = (e) => {
-    if (e.key === "Enter") {
-      onEditComplete(ref.current.value);
-    }
-  };
   const ref = useRef(null);
   useEffect(() => {
+    const element = ref.current;
+    const InputDeleteEnterKey = (e) => {
+      if (e.key === "Enter") {
+        onEditComplete(element.value);
+      }
+    };
+    const onblur = () => onEditComplete(element.value);
     ref.current.focus();
-    ref.current.onkeypress = () => InputDeleteEnterKey;
-    ref.current.onblur = () => onEditComplete(ref.current.value);
+    ref.current.addEventListener("blur", onblur);
     ref.current.addEventListener("keypress", InputDeleteEnterKey);
+    return () => {
+      element.removeEventListener("blur", onblur);
+      element.removeEventListener("keypress", InputDeleteEnterKey);
+    };
   }, []);
 
   return (
